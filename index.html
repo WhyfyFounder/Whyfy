@@ -5,48 +5,117 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>应用支持</title>
 <style>
-  body { font-family: Arial, sans-serif; line-height: 1.6; }
+   body { font-family: Arial, sans-serif; line-height: 1.6; }
   .container { width: 80%; margin: auto; overflow: hidden; }
   header { background: #333; color: #fff; padding: 20px; text-align: center; }
+   .language-switcher {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+  .language-switcher button {
+    padding: 5px 10px;
+    margin-left: 5px;
+    background-color: #f4f4f4;
+    border: none;
+    cursor: pointer;
+  }
   section { padding: 20px; }
   .faq { background: #f4f4f4; padding: 10px; margin-bottom: 10px; }
   .faq h2 { margin: 0; }
 </style>
+<script>
+  function changeLanguage(lang) {
+    document.querySelectorAll('[data-lang]').forEach(function(el) {
+      el.textContent = translations[lang][el.getAttribute('data-lang')];
+    });
+  }
+
+const translations = {
+  'en': {
+    'support': 'App Support and Help',
+    'faq': 'FAQ',
+    'guide': 'Usage Guide',
+    'explore': 'Explore Questions',
+    'answer': 'Answer Questions',
+    'manage': 'Manage Questions',
+    'profile': 'User Profile',
+    'settings': 'Settings',
+    'contact': 'Contact Us',
+    'faq-desc': 'Here we will supplement answers to frequently asked questions from users.',
+    'explore-guide': 'Enter your question and click the "Start Exploring" button to go to the question answer page for in-depth exploration.',
+    'answer-guide': 'On the question answer page, generate a title based on your question and enter your answer in the answer input box.',
+    'manage-guide': 'Use the "Continue", "Resolve", "Archive", and "Explore" buttons to manage your questions.',
+    'profile-guide': 'Click on the avatar to enter the personal center, manage your list of questions, settings, and feedback.',
+    'settings-guide': 'Change the default search engine in settings, enable overview and branching features to enhance your exploration experience.',
+    'contact-desc': 'If you have other suggestions or comments about the app, feel free to send an email to give feedback.',
+    'contact-info': 'Our contact information is:'
+  },
+  'zh': {
+    'support': '应用支持与帮助',
+    'faq': '常见问题解答',
+    'guide': '使用指南',
+    'explore': '问题探索',
+    'answer': '问题解答',
+    'manage': '问题操作',
+    'profile': '个人中心',
+    'settings': '设置选项',
+    'contact': '联系我们',
+    'faq-desc': '针对用户反馈较多的问题,后续我们将在这里进行补充.',
+    'explore-guide': '输入您的问题并点击“开始探索”按钮，进入问题回答页面，进行深入探索。',
+    'answer-guide': '在问题回答页面，根据您的问题生成标题，并在答案输入框中输入您的答案。',
+    'manage-guide': '使用“继续”、“解决”、“存档”和“探索”按钮来管理您的问题。',
+    'profile-guide': '点击头像进入个人中心，管理您的问题列表、设置和意见反馈。',
+    'settings-guide': '在设置中更改默认搜索引擎，启用总览和分支功能，以增强您的探索体验。',
+    'contact-desc': '如果你对应用还有其它的建议或意见，欢迎发送邮件进行反馈。',
+    'contact-info': '我们的联系方式是:'
+  }
+};
+
+</script>
 </head>
 <body>
 <header>
-  <h1>应用支持与帮助</h1>
+  <h1 data-lang="support">应用支持与帮助</h1>
+   <div class="language-switcher">
+    <button onclick="changeLanguage('en')">English</button>
+    <button onclick="changeLanguage('zh')">中文</button>
+  </div>
 </header>
 <div class="container">
-  <section>
-    <div class="faq">
-      <h2>常见问题解答</h2>
-      <p>待用户反馈后扩展</p>
-    </div>
-    <div class="faq">
-      <h2>使用指南</h2>
-      <h3>问题探索</h3>
-      <p>输入您的问题并点击“开始探索”按钮，进入问题回答页面，进行深入探索。</p>
-      <h3>问题解答</h3>
-      <p>在问题回答页面，根据您的问题生成标题，并在答案输入框中输入您的答案。</p>
-      <h3>问题操作</h3>
-      <p>使用“继续”、“解决”、“存档”和“探索”按钮来管理您的问题。</p>
-      <h3>个人中心</h3>
-      <p>点击头像进入个人中心，管理您的问题列表、设置和意见反馈。</p>
-      <h3>设置选项</h3>
-      <p>在设置中更改默认搜索引擎，启用总览和分支功能，以增强您的探索体验。</p>
-    </div>
-    <div class="faq" style="font-family: Arial, sans-serif; color: #333;">
-      <h2 style="color: #0056b3;">联系我们</h2>
-      <p>如果你对应用还有其它的建议或意见，欢迎发送邮件进行反馈。</p>
-      <p>我们的联系方式是:</p>
-      <ul>
-        <li>邮件: <a href="mailto:whyfy.feedback@gmail.com" style="text-decoration: none; color: #0056b3;">whyfy.feedback@gmail.com</a></li>
-        <li>Twitter: <a href="https://x.com/WhyfyFounder" target="_blank" style="text-decoration: none; color: #0056b3;">@WhyfyFounder</a></li>
-      </ul>
-    </div>
+<section>
+  <div class="faq">
+    <h2 data-lang="faq">常见问题解答</h2>
+    <p data-lang="faq-desc">针对用户反馈较多的问题,后续我们将在这里进行补充.</p>
+  </div>
+  <div class="faq">
+    <h2 data-lang="guide">使用指南</h2>
+    <h3 data-lang="explore">问题探索</h3>
+    <p data-lang="explore-guide">输入您的问题并点击“开始探索”按钮，进入问题回答页面，进行深入探索。</p>
+    <h3 data-lang="answer">问题解答</h3>
+    <p data-lang="answer-guide">在问题回答页面，根据您的问题生成标题，并在答案输入框中输入您的答案。</p>
+    <h3 data-lang="manage">问题操作</h3>
+    <p data-lang="manage-guide">使用“继续”、“解决”、“存档”和“探索”按钮来管理您的问题。</p>
+    <h3 data-lang="profile">个人中心</h3>
+    <p data-lang="profile-guide">点击头像进入个人中心，管理您的问题列表、设置和意见反馈。</p>
+    <h3 data-lang="settings">设置选项</h3>
+    <p data-lang="settings-guide">在设置中更改默认搜索引擎，启用总览和分支功能，以增强您的探索体验。</p>
+  </div>
+  <div class="faq">
+    <h2 data-lang="contact" style="color: #0056b3;">联系我们</h2>
+    <p data-lang="contact-desc">如果你对应用还有其它的建议或意见，欢迎发送邮件进行反馈。</p>
+    <p data-lang="contact-info">我们的联系方式是:</p>
+    <ul>
+      <li>Email: <a href="mailto:whyfy.feedback@gmail.com" style="text-decoration: none; color: #0056b3;">whyfy.feedback@gmail.com</a></li>
+      <li>Twitter: <a href="https://x.com/WhyfyFounder" target="_blank" style="text-decoration: none; color: #0056b3;">@WhyfyFounder</a></li>
+    </ul>
+  </div>
+</section>
 
-  </section>
 </div>
+<script>
+  // 默认语言设置
+  changeLanguage('zh');
+</script>
 </body>
 </html>
